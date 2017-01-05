@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ArtistGrid from '../components/ArtistGrid'
-import Search from '../components/Search'
+import ArtistGrid from './components/artists/ArtistGrid'
+import Search from './components/search/Search'
 
 class App extends Component {
 

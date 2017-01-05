@@ -1,7 +1,10 @@
+//A search bar 'connect'ed component
+//  that fires off the fetch artists action
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import {fetchArtists, updateQuery} from '../redux/artists/action-creators'
+import {fetchArtists, updateQuery} from '../../redux/artists/action-creators'
 
 const styles = {
   searchContainer: {
@@ -27,6 +30,7 @@ class Search extends Component {
       fetchArtists(query);
     } else {
       //TODO: error handling and form guarding
+      //TODO: don't allow multiple searches while loading
     }
   }
 

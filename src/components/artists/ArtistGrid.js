@@ -1,3 +1,7 @@
+//A container for the Artist Component 
+//  that uses flexbox and media queries 
+//  for frontend responsiveness
+
 import React, { PropTypes } from 'react'
 import Artist from './Artist'
 var MediaQuery = require('react-responsive');
@@ -42,6 +46,9 @@ const renderArtists = (artists, size) => {
   return row;
 }
 
+//if the window's width is greater than 769px, 
+//  then render 3 artists per row
+//Else, render 2 artists per row
 const ArtistGrid = ({ artists }) => (
   <MediaQuery minWidth={769}>
     {(matches) => {

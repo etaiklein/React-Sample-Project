@@ -1,3 +1,5 @@
+//A Pure Component to Render an Artist's picture and metadata
+
 import React, { PropTypes } from 'react'
 
 const styles = {
