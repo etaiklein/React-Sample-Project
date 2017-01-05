@@ -21,17 +21,23 @@ class Search extends Component {
     this.props.updateQuery(event.target.value);
   }
 
+  //TODO: error handling and form guarding
   handleSubmit(event) {
     event.preventDefault();
 
-    let {fetchArtists, query} = this.props;
+    let {fetchArtists, query, loading} = this.props;
     
-    if (query) {
-      fetchArtists(query);
-    } else {
-      //TODO: error handling and form guarding
-      //TODO: don't allow multiple searches while loading
+    if (!query) {
+      console.log("please type in a query");
+      return;
     }
+
+    if (loading) {
+      console.log("please wait for previous query to finish loading first");
+      return;
+    }
+
+    fetchArtists(query);      
   }
 
   render() {
@@ -47,6 +53,9 @@ class Search extends Component {
 
 const mapStateToProps = state => ({
   query: state.artists.query,
+  loading: state.artists.loading,
+  loaded: state.artists.loaded,
+  error: state.artists.error,
 })
 
 const mapDispatchToProps = dispatch => ({
