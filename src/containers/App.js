@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { requestArtists, receiveArtists } from '../actions'
-import Artist from '../components/Artist'
+import ArtistGrid from '../components/ArtistGrid'
 
 class App extends Component {
 
@@ -14,13 +14,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Artist/>
+        <ArtistGrid
+          artists={this.props.artists.data}
+        />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
+  return {artists: state.artists}
 }
 
 export default connect(mapStateToProps)(App)
