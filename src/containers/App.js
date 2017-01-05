@@ -1,21 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { requestArtists, receiveArtists } from '../actions'
 import ArtistGrid from '../components/ArtistGrid'
+import Search from '../components/Search'
 
 class App extends Component {
-
-  componentDidMount() {
-  }
-
-  componentWillReceiveProps(nextProps) {
-  }
 
   render() {
     return (
       <div>
+        <Search/>
         <ArtistGrid
-          artists={this.props.artists.data}
+          artists={this.props.artists}
         />
       </div>
     )
@@ -23,7 +18,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {artists: state.artists}
+  return {artists: state.artists.data}
 }
 
 export default connect(mapStateToProps)(App)

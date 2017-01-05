@@ -1,12 +1,10 @@
-import { combineReducers } from 'redux'
-import {
-  REQUEST_ARTISTS, RECEIVE_ARTISTS
-} from '../actions'
+import * as ActionTypes from './action-types'
 
 const initState = {
   loaded: false,
   loading: false,
   error: "",
+  query: '',
   data: [
     {
       name: 'The Weeknd',
@@ -41,19 +39,54 @@ const initState = {
   ],
 };
 
-const artists = (state = initState, action) => {
+let formatData = (data) => {
+  let artists = []
+  for (let i = 0; i < Math.min(data.length, 6) ; i++){
+    let artist = data[i];
+    artists.push({
+      name: artist.artistName,
+      description: '',
+      url: 'http://iscale.iheart.com/catalog/artist/' + artist.artistId + '?ops=fit(250,0)',
+    })
+  }
+  return artists;
+}
+
+const reducer = (state = initState, action) => {
   switch (action.type) {
-    case REQUEST_ARTISTS:
-      return state
-    case RECEIVE_ARTISTS:
-      return state
+
+    case ActionTypes.UPDATE_QUERY: 
+      return {
+        ...state,
+        query: action.query
+      };
+
+    case ActionTypes.FETCH_ARTISTS:
+      return {
+        ...state,
+        loaded: false,
+        loading: true,
+      };
+
+    case ActionTypes.FETCH_ARTISTS_SUCCESS:
+      return {
+        ...state,
+        loaded: true,
+        loading: false,
+        error: null,
+        data: formatData(action.data),
+      };
+
+    case ActionTypes.FETCH_ARTISTS_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+
     default:
       return state
   }
 }
 
-const rootReducer = combineReducers({
-  artists,
-})
-
-export default rootReducer
+export default reducer;

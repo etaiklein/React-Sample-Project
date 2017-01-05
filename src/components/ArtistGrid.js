@@ -20,9 +20,9 @@ const styles = {
 
 const renderArtists = (artists, size) => {
   let row = [];
-  console.log(artists);
 
-  for (let artist of artists){
+  for (let i = 0; i < artists.length; i++){
+    let artist = artists[i];
     row.push(
       <Artist
         style={size === 3 ? styles.threeInARow : styles.twoInARow}
@@ -33,6 +33,13 @@ const renderArtists = (artists, size) => {
       />
     );
   }
+
+  if (row.length === 0){
+    row.push(
+      <div>No results found. Please try another query.</div>
+    )
+  }
+
   return row;
 }
 
