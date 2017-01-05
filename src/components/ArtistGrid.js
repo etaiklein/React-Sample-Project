@@ -3,7 +3,6 @@ import Artist from './Artist'
 var MediaQuery = require('react-responsive');
 
 const styles = {
-
   grid: {
     display: 'flex',
     flexFlow: 'row wrap',
