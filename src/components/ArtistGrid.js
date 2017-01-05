@@ -4,9 +4,9 @@ var MediaQuery = require('react-responsive');
 
 const styles = {
   grid: {
+    alignItems: 'left',
     display: 'flex',
     flexFlow: 'row wrap',
-    alignItems: 'left',
     justifyContent: 'flex-start',
   },
   threeInARow: {

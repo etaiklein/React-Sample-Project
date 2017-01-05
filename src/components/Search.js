@@ -3,6 +3,15 @@ import { connect } from 'react-redux'
 
 import {fetchArtists, updateQuery} from '../redux/artists/action-creators'
 
+const styles = {
+  searchContainer: {
+    margin: 20,
+  },
+  search: {
+    marginRight: 5
+  }
+}
+
 class Search extends Component {
 
   handleChange(event) {
@@ -24,8 +33,8 @@ class Search extends Component {
   render() {
     let {query} = this.props;
     return (
-      <form style={{margin: 20}} onSubmit={(e) => this.handleSubmit(e)}>
-        <input value={query} type="text" onChange={(e) => this.handleChange(e)}/>
+      <form style={styles.searchContainer} onSubmit={(e) => this.handleSubmit(e)}>
+        <input style={styles.search} value={query} type="text" onChange={(e) => this.handleChange(e)}/>
         <input type="submit" value="Submit" />
       </form>
     );

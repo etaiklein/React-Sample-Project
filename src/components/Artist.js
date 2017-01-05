@@ -11,8 +11,8 @@ const styles = {
     width: '100%',
   },
   name: {
-    fontWeight: 'bold',
     color: 'black',
+    fontWeight: 'bold',
   },
   description: {
     color: 'black',
